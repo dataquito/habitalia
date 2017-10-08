@@ -1,9 +1,12 @@
 
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import WorldMap from 'grommet/components/WorldMap';
+
 
 import Questions from '../components/Landing/Questions';
 import Charts from '../components/Landing/Charts';
+import Video from 'grommet/components/Video';
 
 import Accordion from 'grommet/components/Accordion';
 import AccordionPanel from 'grommet/components/AccordionPanel';
@@ -37,7 +40,19 @@ import Section from 'grommet/components/Section';
 import { getMessage } from 'grommet/utils/Intl';
 
 import NavControl from '../components/NavControl';
-import Infographic_1 from '../../images/flyer_red_probono.jpg';
+import logo_habitalia from '../../images/Logo_ByN.png';
+import logo_color from '../../images/Logo.png';
+import laptop from '../../images/laptop.png';
+import wrench from '../../images/wrench.png';
+import merge from '../../images/merge.png';
+import dscience from '../../images/data-science.png';
+
+
+
+import satelite from '../../images/satelite.jpg';
+import redi from '../../images/logo_redi.png';
+import expansion from '../../images/expansion.png';
+
 import MapCases from '../../images/map_casos.jpg';
 import appleseed from '../../images/appleseed.png';
 import fbm from '../../images/fbm.png';
@@ -54,71 +69,6 @@ import odv from '../../images/observatorio_de_vivienda_t.png';
 
 import { pageLoaded } from './utils';
 
-const Graph = props => {
-  return (
-    <Map vertical={true}
-      data={{
-        "categories": [
-          {
-            "id": "category-1",
-            "label": "Pilar Informativo",
-            "items": [
-              {
-                "id": "item-1-1",
-                "label": "Infografías",
-                "node": <Box colorIndex='brand'  pad='small'>Infografías</Box>
-              },
-              {
-                "id": "item-1-2",
-                "label": "Preguntas frecuentes",
-                "node": <Box colorIndex='brand'  pad='small'>Preguntas Frecuentes</Box>
-              }
-            ]
-          },
-          {
-            "id": "category-2",
-            "label": "Pilar de Atención Directa",
-            "items": [
-              {
-                "id": "item-2-1",
-                "label": "Registro de Casos",
-                "node": <Box colorIndex='brand'  pad='small'>Registro de Casos</Box>
-              },
-              {
-                "id": "item-2-2",
-                "label": "Vinculación Externa",
-                "node": <Box colorIndex='brand'  pad='small'>Vinculación Externa</Box>
-              }
-            ]
-          },
-          {
-            "id": "category-3",
-            "label": "Análisis Post-Desastre",
-            "items": [
-              {
-                "id": "item-3-1",
-                "label": "Análisis Agregado",
-                "node": <Box colorIndex='brand'  pad='small'>Análisis Agregado</Box>
-              },
-              {
-                "id": "item-3-2",
-                "label": "Fortalecimiento Jurídico",
-                "node": <Box colorIndex='brand'  pad='small'>Fortalecimiento Jurídico</Box>
-              }
-            ]
-          }
-        ],
-        "links": [
-          {"parentId": "item-1-1", "childId": "item-2-2"},
-          {"parentId": "item-1-2", "childId": "item-2-2"},
-          {"parentId": "item-1-2", "childId": "item-2-1"},
-          {"parentId": "item-2-2", "childId": "item-3-1"},
-          {"parentId": "item-2-1", "childId": "item-3-2"}
-        ]
-      }} />
-  );
-};
-
 class Landing extends Component {
   // componentDidMount() {
   //   pageLoaded('Dashboard');
@@ -134,13 +84,20 @@ class Landing extends Component {
     const { intl } = this.context;
     return (
       <Article primary={true}>
+
         <Header
           fixed
           size="small"
-          colorIndex="brand"
+          opacity=".1"
           pad={{ horizontal: 'medium', between: 'small' }}
         >
-          <Title>#Jurídica19S</Title>
+
+          <Title>
+              <Image src={logo_habitalia}
+              fit='full'
+              full={true} />
+          </Title>
+
           <Box flex={true}
             justify='end'
             direction='row'
@@ -148,375 +105,122 @@ class Landing extends Component {
           </Box>
         </Header>
 
-        <Hero background={<Image src='http://assets.tiempo.com.mx/uploads/imagen/imagen/135208/Cientos-personas-colapsados-Ciudad-Mexico_MILIMA20170919_0481_3.jpg'
+
+        <Hero background={<Video autoPlay={true}
+                      showControls={false}
+                      loop={true}
+                      muted={true}
+                      fit='cover'>
+                      <source src='https://s3.amazonaws.com/utils-rsa/habitalia.mp4'
+                        type='video/mp4' />
+                    </Video>}
+          margin="large"
+          backgroundColorIndex='dark'
+          size='large'>
+
+
+          <Box direction='row'
+            justify='left'>
+
+            <Box >
+                <Card
+                  textSize="small"
+                  size="large"
+                  margin='large'
+                  justify="center"
+                  contentPad="medium"
+                  headingStrong
+                  heading="Habitalia"
+                  description="Hacemos el procesamiento y análisis de datos fácil
+                  para que tú tengas todas las herramientas para tomar las mejores
+                  decisiones para tú empresa.">
+                </Card>
+            </Box>
+
+          </Box>
+        </Hero>
+
+
+        <Hero background={<Image src='https://www.hewlettpackardpathfinder.com/img/home/shapes2-bg.svg'
             fit='cover'
             full={true} />}
           backgroundColorIndex='dark'
-          size='large'>
+          size='xlarge'>
+
           <Box direction='row'
-            justify='center'
-            align='center'>
-            <Box basis='1/2'
-              align='end'
-              pad='medium' />
-            <Box basis='1/2'
+            margin='large'
+            justify='center'>
+            <Box
               pad={{
-                horizontal: "large",
-                vertical: "large",
-                between: "medium"
-              }}
-              announce={false}
-              direction="column"
-              tag="div"
-              responsive
-              focusable
-              size="large"
-              colorIndex="light-1">
-              <Card
-                textSize="small"
-                size="large"
-                contentPad="medium"
-                headingStrong
-                label="#Jurídica19S"
-                heading="Herramientas jurídicas y necesidades post Sismo"
-                description="Esta plataforma surge como respuesta de la comunidad jurídica a la emergencia provocada por los sismos de septiembre de 2017 para orientar a las víctimas en sus necesidades legales."
-                link={<Anchor label='Solicita ayuda legal'
-                  href='https://goo.gl/forms/LB3B1uiXdpkBKhI53'
-                  target='_blank'
-                  primary={true}
-                  reverse={false}
-                  disabled={false}
-                   />}
-              >
-              </Card>
+                  horizontal: "large",
+                  vertical: "large",
+                  between: "large"
+                }}
+                announce={false}
+                direction="column"
+                tag="div"
+                responsive
+                focusable
+                size="xlarge"
+                colorIndex="light-2">
+
+                <Card
+                  textSize="small"
+                  size="large"
+                  contentPad="medium"
+                  headingStrong
+                  heading="De datos a historias."
+                  description=" Sabemos cómo convertir tus datos
+                  en herramientas de toma de decisión con interfaces
+                  interactivas, claras, hermosas y fáciles de usar."
+                >
+
+                </Card>
+
+            <Box
+                announce={false}
+                direction="column"
+                tag="div"
+                responsive
+                focusable
+                size="large">
+
+                <WorldMap onSelectPlace
+                  zoom={false}
+                  series={[{
+                  "continent": "NorthAmerica",
+                  "colorIndex": "accent-2",
+                  "onClick": ""
+                      }, {
+                  "continent": "SouthAmerica",
+                  "label": "South America",
+                  "colorIndex": "accent-2"
+                  },{
+                  "continent": "Europe",
+                  "colorIndex": "accent-2",
+                  "onClick": ""
+                      },{
+                  "continent": "Africa",
+                  "colorIndex": "accent-2",
+                  "onClick": ""
+                      },{
+                  "continent": "Asia",
+                  "colorIndex": "accent-2",
+                  "onClick": ""
+                      },{
+                  "continent": "Australia",
+                  "colorIndex": "accent-2",
+                  "onClick": ""
+                      }
+                ]} />
             </Box>
+
+            </Box>
+
+
+
           </Box>
         </Hero>
-        <Box
-          colorIndex="light-1"
-          direction="column"
-          tag="div"
-          focusable
-          responsive
-          pad={{ vertical: 'large' }}
-        >
-          <Box
-            alignContent="stretch"
-            basis="full"
-            margin="large"
-            textAlign="left"
-            colorIndex="light-1"
-            direction="row"
-            tag="div"
-            focusable
-            responsive
-            pad="small"
-          >
-            <Box basis="1/2">
-
-              <Heading tag="h2" strong margin="small">Jurídica 19-S</Heading>
-              <Paragraph size="medium" width="large" >
-                    La Fundación <b>Appleseed México</b>, La <b>Fundación Barra Mexicana</b> y el <b>Centro Mexicano Pro Bono</b> unen esfuerzos para brindar esta orientación a través de sus alianzas con universidades, abogados, abogadas y firmas comprometidas con este esfuerzo.
-                    Se invita a las universidades, demás Organizaciones de la Sociedad Civil, Colegios de Abogados y abogadas de todo el país y sociedad en general a unirse a este esfuerzo y compartir información verídica y útil para las personas en necesidad.
-              </Paragraph>
-              <Paragraph  size="small" width="small" margin='none' >
-                #Jurídica19S Powered by <a href='http://www.observatoriodevivienda.org' target='_blank' ><Image src={odv} style={{ height: 'auto', width: '15%' }}/></a> & Dataquito
-              </Paragraph>
-
-            </Box>
-
-
-            <Box basis="1/2" margin="small">
-              <Graph/>
-            </Box>
-
-          </Box>
-
-
-          <Box direction="row" margin="large" basis="full" pad="small" colorIndex='grey-4-a'>
-            <Box basis='1/3' margin="small">
-              <Heading tag="h3" strong margin="none">Pilar Informativo</Heading>
-              <Paragraph size="small" > Información para el público en general y para abogadas y abogados en las que se responden a las preguntas legales principales derivadas de afectaciones por sismo.</Paragraph>
-            </Box>
-            <Box basis='1/3' margin="small">
-              <Heading tag="h3" strong margin="none">Pilar de Atención Directa</Heading>
-              <Paragraph size="small" > Pide una jornada para tu comunidad en la que abogadas y abogados asistan a orientarte en tus necesidades legales. O, llena el formulario para que se te asigne un asesor o asesora jurídica quien te contactará por teléfono o email para darte orientación.</Paragraph>
-            </Box>
-            <Box basis='1/3' margin="small">
-              <Heading tag="h3" strong margin="none">Análisis Post-Desastre</Heading>
-              <Paragraph size="small" >Consulta los resultados de las diversas iniciativas y sus planes de seguimiento.</Paragraph>
-            </Box>
-          </Box>
-
-          <Box direction="row">
-              <Box basis='1/3'
-              pad={{
-                horizontal: "large",
-                vertical: "large",
-                between: "medium"
-              }}
-              announce={false}
-              direction="column"
-              justify="center"
-              align="center"
-              tag="div"
-              responsive
-              focusable
-              size="large"
-              colorIndex="light-1">
-              <Card thumbnail={<Image src={"https://image.flaticon.com/icons/svg/265/265667.svg"}/>}
-                textAlign="center"
-                margin="small"
-                contentPad="small"
-                label='Ayudar como Abogado'
-                link={<Anchor label='Ver Más'
-                  href='https://docs.google.com/forms/d/16va-w1Xu_08GDOl1R0hWKD9r1VNU9uU7gLAHm61jF3Y/viewform?ts=561c096c&edit_requested=true'
-                  primary={true}
-                  reverse={false}
-                  disabled={false}
-                  />}
-                headingStrong={false} />
-
-            </Box>
-            <Box basis='1/3'
-              pad={{
-                horizontal: "large",
-                vertical: "large",
-                between: "medium"
-              }}
-              announce={false}
-              direction="column"
-              justify="center"
-              align="center"
-              tag="div"
-              responsive
-              focusable
-              size="large"
-              colorIndex="light-1">
-              <Card thumbnail={
-                <Image src={'https://image.flaticon.com/icons/svg/554/554866.svg'}/>}
-                textAlign="center"
-                margin="small"
-                contentPad="small"
-                label='Solicitar ayuda'
-                link={<Anchor label='Ver Más'
-                  href='https://goo.gl/forms/8I3L0raWCUnCxlE62'
-                  primary={true}
-                  reverse={false}
-                  disabled={false}
-                  />}
-                headingStrong={false} />
-
-            </Box>
-
-            <Box basis='1/3'
-              pad={{
-                horizontal: "large",
-                vertical: "large",
-                between: "medium"
-              }}
-              announce={false}
-              direction="column"
-              justify="center"
-              align="center"
-              tag="div"
-              responsive
-              focusable
-              size="large"
-              colorIndex="light-1">
-              <Card thumbnail={
-                <Image src={'https://image.flaticon.com/icons/svg/568/568883.svg'}/>}
-                textAlign="center"
-                margin="small"
-                contentPad="small"
-                label='Solicita una Jornada de Asesoría Legal'
-                link={<Anchor label='Ver Más'
-                  href='https://goo.gl/forms/ERX7XRPJETbxxj4f1'
-                  primary={true}
-                  reverse={false}
-                  disabled={false}
-                  />}
-                headingStrong={false} />
-
-            </Box>
-          </Box>
-        </Box>
-
-          <Box
-            colorIndex='grey-4-a'
-            pad='small'
-            margin="large"
-            direction="column"
-            alignContent="stretch"
-            responsive
-            basis="full">
-            <Heading tag="h3" strong margin="none">Conoce tus obligaciones y derechos de manera sencilla.</Heading>
-            <Questions/>
-          </Box>
-
-
-        <Box align="center"
-          direction="column"
-          tag="div"
-          focusable
-          responsive
-          pad={{ vertical: 'large' }}
-        >
-
-          <Box className="columns-container"
-            align="center"
-            size={{ width: "xxlarge" }}
-            pad={{ horizontal: "large" }}
-            announce={false}
-            direction="column"
-            tag="div"
-            responsive
-            focusable
-          >
-            <Heading tag='h2' strong={false}>Infografías y Documentos de Interés</Heading>
-          </Box>
-          <Box className="columns-container"
-            pad={{ horizontal: "large" }}
-            full="horizontal"
-            announce={false}
-            direction="row"
-            tag="div"
-            responsive
-            focusable>
-          </Box>
-
-          <Box className="columns-container"
-            pad={{ horizontal: "large" }}
-            full="horizontal"
-            announce={false}
-            direction="column"
-            tag="div"
-            responsive
-            focusable
-          >
-            <Columns size="medium"
-              justify="center"
-              maxCount={10}
-              contentPad="medium"
-              masonry
-              responsive
-            >
-              <Card thumbnail={
-                <a href='https://s3.amazonaws.com/www.juridica19s.org/utils/ayuda_juridica.jpg' target='_blank' >
-                <Image src={Infographic_1}
-                  fit='cover'
-                  full={true} />
-                </a>
-                }
-                margin="small"
-                contentPad="medium"
-                label='Apoyo Jurídico'
-                headingStrong={false} />
-
-              <Card thumbnail={
-                <a href='https://s3.amazonaws.com/www.juridica19s.org/utils/Gui%CC%81a_Juri%CC%81dica_Consolidada_v2_26.09.2017.pdf' target='_blank' >
-                <Image src={guia_juridica}
-                  fit='cover'
-                  target='_blank'
-                  full={true} />
-                </a>
-                }
-                margin="small"
-                contentPad="medium"
-                label='Guía Jurídica'
-                headingStrong={false} />
-
-              <Card thumbnail={
-                <a href='https://s3.amazonaws.com/www.juridica19s.org/utils/infografia1-A-01.jpg' target='_blank' >
-                <Image src={'https://s3.amazonaws.com/www.juridica19s.org/utils/infografia1-A-01.jpg'}
-                  fit='cover'
-                  target='_blank'
-                  full={true} />
-                </a>
-                }
-                margin="small"
-                contentPad="medium"
-                label='Daño Edificio - Propietario'
-                headingStrong={false} />
-
-              <Card thumbnail={
-                <a href='https://s3.amazonaws.com/www.juridica19s.org/utils/infografia1-B-01.jpg' target='_blank' >
-                <Image src={'https://s3.amazonaws.com/www.juridica19s.org/utils/infografia1-B-01.jpg'}
-                  fit='cover'
-                  target='_blank'
-                  full={true} />
-                </a>
-                }
-                margin="small"
-                contentPad="medium"
-                label='Daño Edificio - Ocupante'
-                headingStrong={false} />
-
-            </Columns>
-
-            <span style={{ fontSize: 10}}>La información contenida en esta guía o imagen es general y tiene carácter exclusivamente orientador; por lo tanto, no es y no deberá ser interpretado como una recomendación u opinión para llevar a cabo o abstenerse de llevar a cabo cualquier acción respecto a los temas discutidos en la misma. Esta guía o imagen no sustituye a la asesoría jurídica especializada que, para cada caso, las usuarios deberán obtener antes de actuar sobre uno o más de los temas discutidos en la misma. Los abogados y organizaciones involucradas en la preparación de esta guía general, no emiten ninguna opinión o juicio sobre, y asimismo, de manera expresa, no se hacen responsables de la exactitud de la información contenida en la misma.</span>
-          </Box>
-        </Box>
-
-
-
-        <hr/>
-        <Box pad="small"  margin="large" >
-          <Heading tag='h3' strong={true}>Casos en Números</Heading>
-          <Box direction="row" margin="large" >
-            <Box basis="1/2" >
-              <Heading tag='h4' strong={true}>Tipos de Casos: </Heading>
-              <Paragraph width="large">En la siguiente tabla se observan los tipos de casos recibidos hasta la fecha. </Paragraph>
-              <Charts/>
-            </Box>
-            <Box basis="1/2">
-              <Heading tag='h4' strong={true}>Ubicación Espacial: </Heading>
-              <Paragraph width="large">En el siguiente mapa se observa la localización por zona de los casos recibidos. </Paragraph>
-              <Box justify="center" alignContent="center" align="center">
-                <iframe width="100%" height="700" frameborder="0" src="https://observatoriodevivienda.carto.com/viz/1978ae39-1a68-45b5-87a3-c5bc4405bd2b/embed_map" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
-              </Box>
-            </Box>
-          </Box>
-        </Box>
-        <Box>
-        </Box>
-
-        <Box pad='medium'
-          basis="full"
-          colorIndex="light-2"
-          direction="column">
-          <Box basis="full" direction="row">
-            <Box basis="1/3">
-              <Heading tag='h3' strong={true}>Solicita una Jornada de Asesoría Legal:</Heading>
-              <Paragraph>
-              ¿Tienes un grupo de 15 a 25 personas que necesiten asesoría directa en un mismo sitio? Llámanos para organizar una visita a tu localidad.
-              </Paragraph>
-              <Paragraph>
-              Se requiere que la persona solicitante pueda ser contacto directo para organizar a las personas y la logística de la visita. Bienvenidas las solicitudes de organizaciones.
-              </Paragraph>
-
-              <Anchor icon={<Edit />}
-                label='Solicítala Aquí'
-                href='https://goo.gl/forms/ERX7XRPJETbxxj4f1'
-                target='_blank'
-                primary={true} />
-            </Box>
-            <Box basis="1/3" alignContent="center" align="center" alignSelf="center">
-              <Quote >
-                <Paragraph>La palabra Pro Bono deriva del latín pro bono publico que quiere decir “por el bien público” o “por el bien común”. A nivel mundial la comunidad legal entiende por actividad Pro Bono, el trabajo de asesoramiento y/o representación jurídica gratuita en beneficio de la sociedad.</Paragraph>
-              </Quote>
-            </Box>
-            <Box basis="1/3" alignContent="center" align="center" alignSelf="center">
-              <Image src={'https://image.flaticon.com/icons/svg/568/568883.svg'}/>
-            </Box>
-
-          </Box>
-        </Box>
-
-
-
-
-
 
 
 
@@ -539,8 +243,10 @@ class Landing extends Component {
             responsive
             focusable
           >
-            <Heading tag='h2' strong={false}>Alianza</Heading>
+            <Heading tag='h2' strong={true}>Qué Ofrecemos</Heading>
           </Box>
+
+
           <Box className="columns-container"
             pad={{ horizontal: "large" }}
             full="horizontal"
@@ -560,19 +266,38 @@ class Landing extends Component {
             focusable
           >
             <Box basis="1/4" align="center" margin="large" justify="center">
-              <img src={appleseed} style={{ height: 'auto', width: '70%' }}/>
+              <img src={wrench} style={{ height: 'auto', width: '40%' }}/>
+              <Paragraph style={{ fontSize: 18}} >Diseño y configuración de <b>Arquitectura de Datos e
+              infraestructura</b> para tú caso de uso.</Paragraph>
             </Box>
             <Box basis="1/4" align="center" margin="large" justify="center">
-              <img src={fbm} style={{ height: '150px', width: '70%' }}/>
+              <img src={merge} style={{ height: 'auto', width: '40%' }}/>
+              <Paragraph style={{ fontSize: 18}} > Generación de <b>Pipelines Automatizados </b>
+              de ingesta y procesamiento.</Paragraph>
             </Box>
             <Box basis="1/4" align="center" margin="large" justify="center">
-              <img src={PROBONOMX} style={{ height: 'auto', width: '35%' }}/>
+              <img src={dscience} style={{ height: 'auto', width: '40%' }}/>
+              <Paragraph style={{ fontSize: 18}} > Desarrollo de modelos predictivos con
+              metodologías de <b>Machine Learning</b> </Paragraph>
             </Box>
             <Box basis="1/4" align="center" margin="large" justify="center">
-              <img src={probono1} style={{ height: 'auto', width: '70%' }}/>
+              <img src={laptop} style={{ height: 'auto', width: '40%' }}/>
+              <Paragraph style={{ fontSize: 18}} > <b>Plataformas y Dashboards</b> adaptados a tú conjunto
+              de datos</Paragraph>
             </Box>
-
           </Box>
+        </Box>
+
+
+
+        <Box align="center"
+          direction="column"
+          tag="div"
+          focusable
+          responsive
+          pad={{ vertical: 'small' }}
+        >
+
           <Box className="columns-container"
             align="center"
             size={{ width: "xxlarge" }}
@@ -582,15 +307,157 @@ class Landing extends Component {
             tag="div"
             responsive
             focusable
-            margin="large"
           >
-            <Heading tag='h2' strong={false}>Firmas y Profesionales</Heading>
+            <Heading tag='h2' strong={true}>Algunos de Nuestros Proyectos</Heading>
           </Box>
 
-            <Paragraph style={{ fontSize: 18}} >Baker McKenzie; Basham, Ringe y Correa; Bufete Sánchez Navarro BSN; Chevez Ruiz, Zamarripa; Creel, García-Cuéllar, Aiza y Enriquez; Dla Piper; Greenberg Traurig; Hogan Lovells BSTL; Holland and Knight; Jones Day; Ritch Muller; Sánchez DeVanny; Notaría 92; Notaría 250; Abogadas y abogados independientes: Marco Antonio Vaca; Angeles Anaya; </Paragraph>
 
+          <Box className="columns-container"
+            pad={{ horizontal: "large" }}
+            full="horizontal"
+            announce={false}
+            direction="row"
+            tag="div"
+            responsive
+            focusable
+          >
+          </Box>
+          <Box className="columns-container"
+            pad={{ horizontal: "small" }}
+            full="horizontal"
+            direction="row"
+            tag="div"
+            responsive
+            focusable
+          >
+            <Box basis="1/3" align="center" margin="large" justify="center">
+            <Box align="center" margin="large" justify="center">
+              <Heading tag='h2' strong={true}>Machine Learning</Heading>
+              <a href='https://s3.amazonaws.com/www.habitalia.mx/utils/Reporte+Urban.pdf' target='_blank' >
+              <Box align="center" margin="large" justify="center">
+                <Heading tag='h3' strong={true}>Modelos de Expansión Urbana</Heading>
+                <img src={expansion} style={{ height: 'auto', width: '40%' }}/>
+                <Paragraph style={{ fontSize: 18}} >
+                Desarrollo de Modelos Predictivos de crecimiento urbano para ciudades de Jordania, Indonesia y Costa de Marfil.
+                </Paragraph>
+              </Box>
+            </a>
+            </Box>
+            </Box>
+
+            <Box basis="1/3" align="center" margin="large" justify="center">
+            <Box align="center" margin="large" justify="center">
+              <Heading tag='h2' strong={true}>Desarrollo Web: </Heading>
+              <a href='http://www.co-mapp.org/' target='_blank' >
+              <Box align="center" margin="large" justify="center">
+                <Image  src='http://comapp.org.s3-website-us-west-2.amazonaws.com/7c970965785b9a21f8185c0c4b2ca0e9.png' style={{ height: 'auto', width: '70%' }}/>
+                <Paragraph style={{ fontSize: 18}} >
+                  Desarrollo de app móvil para levantamiento de información.
+                </Paragraph>
+              </Box>
+              </a>
+            </Box>
+            </Box>
+
+
+            <Box basis="1/3" align="center" margin="large" justify="center">
+            <Box align="center" margin="large" justify="center">
+              <Heading tag='h2' strong={true}>Desarrollo Inmobiliario: </Heading>
+              <a href='http://www.get-redi.com.mx' target='_blank' >
+              <Box align="center" margin="large" justify="center">
+                <Heading tag='h3' strong={true}>Índice de Desarrollo inmobiliario</Heading>
+                <img src={redi} style={{ height: 'auto', width: '40%' }}/>
+                <Paragraph style={{ fontSize: 18}} >
+                REDI se dedica a mejorar la profesión de desarrollo inmobiliario a través del desempeño social y ambiental, la rendición de cuentas y la transparencia.
+                </Paragraph>
+              </Box>
+              </a>
+            </Box>
+            </Box>
+
+          </Box>
         </Box>
 
+
+
+
+        <Hero background={<Image src={satelite}
+            fit='full'
+            full={true} />}
+          size='medium'>
+
+        </Hero>
+
+
+
+
+
+
+
+        <Box className="columns-container"
+          margin='large'
+          align="center"
+          announce={false}
+          direction="column"
+          tag="div"
+          responsive
+          focusable
+        >
+          <Heading tag='h2' strong={true}>Nuestro Equipo</Heading>
+
+          <Box className="columns-container"
+            full="horizontal"
+            direction="row"
+            tag="div"
+            responsive
+            focusable
+          >
+
+
+
+            <Box basis="1/4" align="center" margin="large" justify="center">
+            <Paragraph style={{ fontSize: 20}} >
+            Somos un equipo de consultores enfocados en el desarrollo de arquitecturas
+            de productos de datos con técnicas de aprendizaje máquina y minería para
+            la generación de herramientas que asistan a organismos públicos y privados
+            en la toma de decisión.
+            </Paragraph>
+
+            <Paragraph style={{ fontSize: 20}} >
+            Nacimos como un brazo analítico independiente del <a href='http://www.observatoriodevivienda.org' target='_blank' ><Image src={odv} style={{ height: 'auto', width: '30%' }}/></a>
+
+            </Paragraph>
+            </Box>
+
+
+            <Box basis="1/4" align="center" margin="large" justify="center">
+            <Paragraph style={{ fontSize: 18}} ><b>Equipo Investigación:</b> </Paragraph>
+            <Paragraph> Equipo con Posgrados
+            en Derecho, Urbanismo y Desarrollo inmobiliario.
+            Conocen los desafíos y las oportunidades de las ciudades y marcan rumbo de nuestros proyectos.
+            </Paragraph>
+            </Box>
+
+            <Box basis="1/4" align="center" margin="large" justify="center">
+            <Paragraph style={{ fontSize: 18}} ><b>Equipo de Ciencia de Datos:</b> </Paragraph>
+            <Paragraph>
+            Se encargan del desarrollo de productos de datos
+            que incluyen los procesos de ingesta, procesamiento y modelado.
+            Cuentan con posgrados en ciencia de datos y computación.</Paragraph>
+            </Box>
+
+            <Box basis="1/4" align="center" margin="large" justify="center">
+
+            <Paragraph style={{ fontSize: 18}} ><b>Equipo de Desarrollo:</b> </Paragraph>
+            <Paragraph>
+            Encargados del desarrollo del front-end y el back-end de las Plataformas y
+            servicios web. Utilizan los frameworks de desarrollo más eficientes para tener
+            servicios rápidos y hermosos.
+            </Paragraph>
+            </Box>
+
+          </Box>
+        </Box>
 
 
 
@@ -598,13 +465,14 @@ class Landing extends Component {
           pad="small"
           size='large'>
           <Title>
-            Jurídica 19-S
+            Habitalia
           </Title>
           <Box direction='row'
             align='center'
-            pad={{"between": "medium"}}>
+            pad={{"between": "medium"}}
+            >
               <Paragraph size="small" width="small" margin='none' >
-              #Jurídica19S Powered by <a href='http://www.observatoriodevivienda.org' target='_blank' ><Image src={odv} style={{ height: 'auto', width: '20%' }}/></a> & Dataquito
+               Powered by <a href='http://www.observatoriodevivienda.org' target='_blank' ><Image src={odv} style={{ height: 'auto', width: '30%' }}/></a>
               </Paragraph>
 
             <Menu direction='row'

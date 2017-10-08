@@ -1,6 +1,6 @@
 import { announcePageLoaded } from 'grommet/utils/Announcer';
 
-const DEFAULT_TITLE = 'Juridica19s';
+const DEFAULT_TITLE = 'Habitalia';
 
 export function pageLoaded(title) {
   if (document) {
